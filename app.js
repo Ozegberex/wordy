@@ -4,7 +4,10 @@ const { Post } = require('./models/post');
 const bodyParser = require('body-parser')
 const { postRouter } = require('./routes/postRoutes');
 const { mainRouter } = require('./routes/mainRoutes');
+const { authRouter } = require('./routes/authRoutes');
 const dotenv = require('dotenv').config();
+const newSession = require('./middleswares/session');
+
 
 // instantiating the application
 const app = express();
@@ -12,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 // setting the app default
 app.set('view engine', 'ejs');
 // setting the middlewares
+app.use(newSession);
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -25,6 +29,8 @@ mongoose
     });
   });
   // every thing related to CRUD posts is in routes/postRoutes
+  
   app.use('/posts', postRouter);
+  app.use('/auth', authRouter);
     // everything related to home about and 404
     app.use(mainRouter);
