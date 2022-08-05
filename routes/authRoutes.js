@@ -4,6 +4,7 @@ const authRouter = express.Router();
 const authController = require('../controllers/authController');
 
 //new_post
-authRouter.get('/registerUser', authController.registerUser);
+authRouter.get('/register', authController.renderRegisterUser);
+authRouter.post('/register', authController.registerUser);
 
 module.exports = { authRouter };
