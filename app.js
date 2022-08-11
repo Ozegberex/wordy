@@ -20,9 +20,9 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(flash());
-app.use((res,req,next) => {
-    res.locals.successMessage = res.flash('success');
-    res.locals.errorMessage = res.flash('error');
+app.use((req, res, next) => {
+    res.locals.successMessage = req.flash('success');
+    res.locals.errorMessage = req.flash('error');
     next();
 });
 // connecting to the database
