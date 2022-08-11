@@ -4,7 +4,7 @@ const newSession = session({
   secret: 'rexsecret',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true },
+  cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000 },
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
 });
 

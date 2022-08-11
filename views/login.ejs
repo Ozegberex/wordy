@@ -73,22 +73,15 @@
     <body class="text-center">
       
   <main class="form-signin w-100 m-auto">
-    <form action="/auth/register" method="post">
-      <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+    <form action="/auth/login" method="post">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <%- include ('../partials/flash')%>
 
   
       <div class="form-floating">
-        <input name="firstName" required type="text" class="form-control" id="floatingFirst" placeholder="Ozegbe">
-        <label for="floatingFirst">First name</label>
-      </div>
-      <div class="form-floating">
-        <input name="lastName" required type="text" class="form-control" id="floatingLast" placeholder="Patricia">
-        <label for="floatingLast">Last name</label>
-      </div><div class="form-floating">
         <input name="email" required type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+        <label for="floatingInput">Email</label>
       </div>
       <div class="form-floating">
         <input name="password" required type="password" class="form-control" id="floatingPassword" placeholder="Password">
@@ -96,7 +89,7 @@
       </div>
   
       
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     </form>
   </main>
 

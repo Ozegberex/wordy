@@ -7,7 +7,7 @@ const { mainRouter } = require('./routes/mainRoutes');
 const { authRouter } = require('./routes/authRoutes');
 const dotenv = require('dotenv').config();
 const { newSession } = require('./middlewares/session');
-
+const flash = require('connect-flash');
 
 // instantiating the application
 const app = express();
@@ -19,6 +19,12 @@ app.use(newSession);
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(flash());
+app.use((res,req,next) => {
+    res.locals.successMessage = res.flash('success');
+    res.locals.errorMessage = res.flash('error');
+    next();
+});
 // connecting to the database
 dbURI = process.env.MONGO_URI;
 mongoose
